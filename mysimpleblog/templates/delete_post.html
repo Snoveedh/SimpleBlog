@@ -1,0 +1,36 @@
+
+
+{% extends 'base.html' %}
+{% block title %} Delete Blog  Post {% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+    {% if user.id == post.author.id %}
+        <h1> Delete POST..... </h1>
+
+        <br/><br>
+        <h3> Delete: {{ post.title }} <h3/>
+        </br>
+
+        <div class = 'form-group'>
+            <form method="POST">
+                    {% csrf_token %}
+                    <strong> Are you Sure? <strong/></br>
+                    <button class="btn btn-secondary"> Delete <button/>
+        </div>
+    
+    {% else %}
+
+        Hey There!! You're not logged in. Login if Already registered.
+
+    {% endif %}
+
+{% else %}
+
+Hey There!! You're not logged in. Login if Already registered.
+
+{% endif %}
+
+
+
+{% endblock %}

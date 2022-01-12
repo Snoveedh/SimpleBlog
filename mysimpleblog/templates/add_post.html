@@ -1,0 +1,41 @@
+
+
+{% extends 'base.html' %}
+{% block title %} Create New Blog Post {% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+
+    <h1> Add POST..... </h1>
+
+    <br/><br>
+
+    <!--- <table> --> 
+    <div class = 'form-group'>
+        <form method="POST" enctype = "multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                {{ form.media }}   <!-- This is for ckeditor in the body same thing in update_post -->
+                
+                <!---
+                {{ form.as_ul }}
+                {{ form.as_table }}
+                --> 
+                <button class="btn btn-secondary"> Post <button/>
+                <!--- </table> --> 
+    </div>
+
+    <script>
+        var name = "{{ user.id  }}";
+        document.getElementById("elder").value= name;
+    </script>
+
+{% else %}
+
+Hey There!! You're not logged in. Login if Already registered.
+
+{% endif %}
+
+
+
+{% endblock %}

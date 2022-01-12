@@ -1,0 +1,35 @@
+
+
+{% extends 'base.html' %}
+{% block title %} Add New Blog Category{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+
+    <h1> Add Category..... </h1>
+
+    <br/><br>
+
+    <!--- <table> --> 
+    <div class = 'form-group'>
+        <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                
+                <!---
+                {{ form.as_ul }}
+                {{ form.as_table }}
+                --> 
+                <button class="btn btn-secondary"> Add Category <button/>
+                <!--- </table> --> 
+    </div>
+
+{% else %}
+
+Hey There!! You're not logged in. Login if Already registered.
+
+{% endif %}
+
+
+
+{% endblock %}
